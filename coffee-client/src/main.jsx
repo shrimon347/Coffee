@@ -11,6 +11,10 @@ import Root from './layout/Root';
 import AddCoffee from './pages/AddCoffee';
 import UpdateCoffee from './pages/UpdateCoffee';
 import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import AllProvider from './provider/AllProvider';
+import CoffeeDetail from './pages/CoffeeDetail';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +31,19 @@ const router = createBrowserRouter([
         element: <AddCoffee />,
       },
       {
+        path: "/Coffee/:id",
+        element: <CoffeeDetail />,
+        loader : ({params}) => fetch(`http://localhost:5000/coffee/${params.id}`)
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
         path: "/updatecoffee/:id",
         element: <UpdateCoffee />,
         loader : ({params}) => fetch(`http://localhost:5000/coffee/${params.id}`)
@@ -36,6 +53,6 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AllProvider><RouterProvider router={router} /></AllProvider>
   </React.StrictMode>,
 )

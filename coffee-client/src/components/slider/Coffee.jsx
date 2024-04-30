@@ -55,9 +55,10 @@ const Coffee = ({ coffee, coffees, setCoffees }) => {
           <p className="mb-3 font-bold text-gray-700 ">Price : {price}</p>
         </div>
         <div className="flex flex-col items-center gap-5 px-5">
-          <button className="p-2 bg-[#E3B577] ">
+          <Link to={`/coffee/${_id}`}><button className="p-2 bg-[#E3B577] ">
             <IoEyeSharp />
           </button>
+          </Link>
           <Link to={`/updatecoffee/${_id}`}>
             <button className="p-2 bg-[#E3B577] ">
               <FaPen />
